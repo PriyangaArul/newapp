@@ -1,0 +1,21 @@
+h2{
+    color:violet;
+    margin-top: 4em;
+    text-align:center;
+}
+input{
+    margin-left:34.5em;
+    width: 50%;
+    border: none;
+    border-color: transparent;
+    border-bottom: 1px solid blue;
+}
+button{
+  margin-left:42em;
+  border-radius: 5em;
+  padding: 0.5em;
+  margin-top: 1em;
+}
+form{
+    margin-top: 5em;
+}
