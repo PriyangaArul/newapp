@@ -5,7 +5,7 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { ListuserComponent } from './listuser//listuser.component';
 const routes: Routes = [
   {path: '', component: AppComponent},
-  {path: 'createuser', component: CreateuserComponent},
+  {path: 'adduser', component: CreateuserComponent},
   {path: 'listuser', component:  ListuserComponent}
   ];
 

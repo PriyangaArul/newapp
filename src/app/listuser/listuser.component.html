@@ -1,3 +1,19 @@
-<p>
-  listuser works!
-</p>
+<table border = "/1">
+  <tr>
+    <th>Id</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>(del)</th>
+  </tr>
+  <tr *ngFor= "let value of user">
+    <td>{{value.id}}</td>
+    <td>{{value.first_name}}</td>
+    <td>{{value.last_name}}</td>
+    <td>{{value.email}}</td>
+    <button (click)="delete(value)">Delete</button>
+    <button (click)="editdata(data)">Edit</button>
+    
+  </tr>
+</table>
+
