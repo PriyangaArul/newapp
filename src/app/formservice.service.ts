@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+=======
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { catchError, tap } from 'rxjs/operators';
+// import { Observable, of } from 'rxjs';
+>>>>>>> 7d91ccf8dfe9e90c3d5e2d830826db1bdc5bc6c9
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +20,7 @@ export class FormserviceService {
   };
   constructor(private http: HttpClient) { }
 
+<<<<<<< HEAD
   add(data){ 
     return this.http.post(this.pageUrl,JSON.stringify(data),this.httpOptions)
     .pipe(
@@ -69,6 +76,12 @@ export class FormserviceService {
       return of(result as T);
     };
   }
+=======
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
+  constructor() { }
+>>>>>>> 7d91ccf8dfe9e90c3d5e2d830826db1bdc5bc6c9
 
 }
 
