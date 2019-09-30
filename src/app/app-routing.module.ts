@@ -4,9 +4,9 @@ import { AppComponent } from './app.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { ListuserComponent } from './listuser//listuser.component';
 const routes: Routes = [
-  {path: '', component: AppComponent},
   {path: 'createuser', component: CreateuserComponent},
-  {path: 'listuser', component:  ListuserComponent}
+  {path: 'listuser', component:  ListuserComponent},
+  {path: '', component: AppComponent}
   ];
 
 @NgModule({
