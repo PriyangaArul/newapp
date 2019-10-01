@@ -6,20 +6,23 @@ import { CreateuserComponent } from './createuser/createuser.component';
 import { FormsModule,  ReactiveFormsModule}   from '@angular/forms';
 import { ListuserComponent } from './listuser/listuser.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ConfoComponent } from './confo/confo.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateuserComponent,
-    ListuserComponent
+    ListuserComponent,
+    ConfoComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

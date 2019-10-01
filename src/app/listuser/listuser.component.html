@@ -1,19 +1,26 @@
+<nav>
+  <a routerLink="/adduser">Add user</a>
+</nav>
+
 <table border = "/1">
   <tr>
     <th>Id</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
-    <th>(del)</th>
+    <th>Delete</th>
+    <th>Edit</th>
   </tr>
   <tr *ngFor= "let value of user">
     <td>{{value.id}}</td>
-    <td>{{value.first_name}}</td>
-    <td>{{value.last_name}}</td>
+    <td>{{value.firstName}}</td>
+    <td>{{value.lastName}}</td>
     <td>{{value.email}}</td>
-    <button (click)="delete(value)">Delete</button>
-    <button (click)="editdata(data)">Edit</button>
+    <td><button class="btn btn-success" (click)="delete(value)">Delete</button></td>
+    <td><button class="btn btn-success" (click)="editdata(data)">Edit</button></td>
     
   </tr>
 </table>
+<br>
+<br>
 

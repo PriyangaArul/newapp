@@ -22,6 +22,10 @@ export class ListuserComponent implements OnInit {
   
   }
   delete(data){
+    this.formservice.confirm('Please confirm..', 'Do you really want to ... ?')
+    .then((confirmed) => console.log('User confirmed:', confirmed))
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+ 
     this.formservice.delete(data.id).subscribe(
       res =>{
         this.formservice.getlist()
@@ -70,5 +74,5 @@ export class ListuserComponent implements OnInit {
         });
   }
 
-
+  
 } 

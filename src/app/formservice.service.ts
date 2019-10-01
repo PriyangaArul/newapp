@@ -1,31 +1,25 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
-=======
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { catchError, tap } from 'rxjs/operators';
-// import { Observable, of } from 'rxjs';
->>>>>>> 7d91ccf8dfe9e90c3d5e2d830826db1bdc5bc6c9
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfoComponent } from './confo/confo.component';
 @Injectable({
   providedIn: 'root'
 })
 export class FormserviceService {
 
-  pageUrl= "http://localhost:8000/proj/user/";
+  pageUrl= "http://127.0.0.1:8000/proj/user/";
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private modalService: NgbModal) { }
 
-<<<<<<< HEAD
   add(data){ 
     return this.http.post(this.pageUrl,JSON.stringify(data),this.httpOptions)
     .pipe(
       tap(response => response),
-      catchError(this.handleError('adduser'))
+      catchError(this.handleError('add account'))
     );
   }
 
@@ -63,6 +57,22 @@ export class FormserviceService {
       catchError(this.handleError('updatedata'))
     )
   }
+
+  public confirm(
+    title: string,
+    message: string,
+    btnOkText: string = 'OK',
+    btnCancelText: string = 'Cancel',
+    dialogSize: 'sm'|'lg' = 'sm'): Promise<boolean> {
+    const modalRef = this.modalService.open(ConfoComponent, { size: dialogSize });
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.message = message;
+    modalRef.componentInstance.btnOkText = btnOkText;
+    modalRef.componentInstance.btnCancelText = btnCancelText;
+
+    return modalRef.result;
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     
     return (error: any): Observable<T> => {
@@ -76,12 +86,7 @@ export class FormserviceService {
       return of(result as T);
     };
   }
-=======
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  // };
-  constructor() { }
->>>>>>> 7d91ccf8dfe9e90c3d5e2d830826db1bdc5bc6c9
+  
 
 }
 
