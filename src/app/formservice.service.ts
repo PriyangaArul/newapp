@@ -9,7 +9,7 @@ import { ConfoComponent } from './confo/confo.component';
 })
 export class FormserviceService {
 
-  pageUrl= "http://127.0.0.1:8000/proj/user/";
+  pageUrl= "http://localhost:8000/proj/user/";
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -58,20 +58,7 @@ export class FormserviceService {
     )
   }
 
-  public confirm(
-    title: string,
-    message: string,
-    btnOkText: string = 'OK',
-    btnCancelText: string = 'Cancel',
-    dialogSize: 'sm'|'lg' = 'sm'): Promise<boolean> {
-    const modalRef = this.modalService.open(ConfoComponent, { size: dialogSize });
-    modalRef.componentInstance.title = title;
-    modalRef.componentInstance.message = message;
-    modalRef.componentInstance.btnOkText = btnOkText;
-    modalRef.componentInstance.btnCancelText = btnCancelText;
-
-    return modalRef.result;
-  }
+  
 
   private handleError<T> (operation = 'operation', result?: T) {
     

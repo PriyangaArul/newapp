@@ -1,11 +1,20 @@
-th,table{
-    margin-left:29em;
-    text-align:center;
-    padding: 1.5em;
-}
+
 nav a{
-   margin-left:70em;
+   
+   border:0.1em solid lightblue;
+   font-size: 1.5em;
+   background-color:lightcoral;
+   color: white;
 }
 button{
     padding:0.1em 0.5em 0.1em 0.5em;
+}
+tr:hover{
+    background-color:lightgray;
+}
+th{
+    background-color: azure;
+}
+form{
+    background:lightgoldenrodyellow;
 }

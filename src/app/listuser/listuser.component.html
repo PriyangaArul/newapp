@@ -1,26 +1,79 @@
 <nav>
   <a routerLink="/adduser">Add user</a>
 </nav>
+<div class="container-fluid">
+  <table class="table table-hover" border="/1">
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </tr>
+    <tr *ngFor="let value of user">
+      <td>{{value.id}}</td>
+      <td>{{value.firstName}}</td>
+      <td>{{value.lastName}}</td>
+      <td>{{value.email}}</td>
+      <td><button class="btn btn-danger" data-toggle="modal" (click)="openModel(value)">Delete</button></td>
+      <td><button class="btn btn-primary" data-toggle="modal" (click)="editdata(value)">Edit</button></td>
 
-<table border = "/1">
-  <tr>
-    <th>Id</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Delete</th>
-    <th>Edit</th>
-  </tr>
-  <tr *ngFor= "let value of user">
-    <td>{{value.id}}</td>
-    <td>{{value.firstName}}</td>
-    <td>{{value.lastName}}</td>
-    <td>{{value.email}}</td>
-    <td><button class="btn btn-success" (click)="delete(value)">Delete</button></td>
-    <td><button class="btn btn-success" (click)="editdata(data)">Edit</button></td>
-    
-  </tr>
-</table>
-<br>
-<br>
+    </tr>
+  </table>
+</div>
 
+
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User {{data.firstName}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="value" class="modal-body">
+        <p>Delete button will delete the user(id)={{data.id}} data permanently.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="delete()">delete</button>
+        <!-- <button type="button" class="btn btn-primary" (click)="editdata()">Edit</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="Model" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User {{data.firstName}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="value" [formGroup]="editForm" class="modal-body">
+          <form [formGroup]="editForm">
+            <div class="border">
+              <div class="form-group">
+                FirstName:<input class="form-control" formControlName="firstName" value="{{data.firstName}}">
+              </div>
+              <div class="form-group">
+                LastName:<input class="form-control" formControlName="lastName" value="{{data.lastName}}">
+              </div>
+              <div class="form-group">
+                Email:<input class="form-control" formControlName="email" value="{{data.email}}">
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary" (click)="editdata()">edit</button> -->
+        <button type="button" class="btn btn-primary" (click)="update()">save</button>
+      </div>
+    </div>
+  </div>
+</div>

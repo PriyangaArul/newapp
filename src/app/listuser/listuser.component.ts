@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormserviceService } from '../formservice.service';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+declare var $ : any;
 
 @Component({
   selector: 'app-listuser',
@@ -11,6 +14,9 @@ export class ListuserComponent implements OnInit {
   edit_id;
   editForm;
   formbuilder;
+  value;
+  data: any;
+  data_edit: any;
   constructor(private formservice:FormserviceService) { }
 
   ngOnInit() {
@@ -21,12 +27,17 @@ export class ListuserComponent implements OnInit {
     })
   
   }
-  delete(data){
-    this.formservice.confirm('Please confirm..', 'Do you really want to ... ?')
-    .then((confirmed) => console.log('User confirmed:', confirmed))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
- 
-    this.formservice.delete(data.id).subscribe(
+
+  openModel(data){  
+    
+    $('#myModal').modal('show');
+    this.data = data;
+    
+  }
+  
+  delete(){
+    
+    this.formservice.delete(this.data.id).subscribe(
       res =>{
         this.formservice.getlist()
     .then(res => {
@@ -36,29 +47,38 @@ export class ListuserComponent implements OnInit {
     })
       }
     )
-    console.log(data)
+    console.log(this.data.id)
   }
-
+  
   editdata(data) {
-    this.formservice.geteditdata(data.id)
+    this.data = data;
+    this.formservice.geteditdata(this.data.id)
       .subscribe(
         res => {
           console.log("res", res);
           res;
+          
         }
       )
+    $('#Model').modal('show');  
+    this.form(this.data_edit);
   }
-  // form(data_edit){
-  //   this.edit_id = data_edit.id
+  form(data_edit){
+    this.edit_id = data_edit.id
   //  this.editForm = this.formbuilder.group({
-  //     firstName: [data_edit.first_name],
-  //     lastName: [data_edit.last_name],
+  //     firstName: [data_edit.firstName],
+  //     lastName: [data_edit.lastName],
   //     email: [data_edit.email],
   //   })
+   this.editForm = new FormGroup({
+     firstName : new FormControl('',Validators.required),
+     lastName : new FormControl('',Validators.required),
+     email : new FormControl('',Validators.required)
+   }); 
     
-  // }
+  }
   
-  update() {
+  update() { 
     this.formservice.updateUser(this.editForm.value, this.edit_id)
       .subscribe(
         res => {
@@ -68,10 +88,7 @@ export class ListuserComponent implements OnInit {
       });
       
         console.log(res)
-        },
-          error => {
-          alert(error);
-        });
+      });
   }
 
   
